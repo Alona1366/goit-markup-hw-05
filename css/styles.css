@@ -8,6 +8,7 @@
     /* others */
     --indent: 30px;
     --items: 3;
+    --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link {
@@ -22,6 +23,9 @@ body {
     font-family: var(--primary-font-family);
 }
 
+.no-scroll {
+    overflow: hidden;
+}
 /* ============= PARTIAL RESET OF STYLES START ============= */
 a {
     text-decoration: none;
@@ -95,6 +99,8 @@ ol {
     background: var(--accent-color);
     border-radius: 4px;
     border: none;
+
+    transition: background-color var(--animation), color var(--animation);
 }
 
 .modal-btn:hover,
@@ -160,13 +166,17 @@ text-decoration: none;
 }
 
 .menu-link {
+    position: relative;
     display: block;
+
     font-family: var(--primary-font-family);
     font-weight: 500;
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;    
     color: var(--primary-color);
+
+    transition: color var(--animation);
 }
 
 .menu-link:hover,
@@ -174,8 +184,11 @@ text-decoration: none;
     color: var(--accent-color);
 }
 
-/* .menu-link-current::after {
+.menu-link-current::after {
     content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
 
     display: block;
     width: 100%;
@@ -183,7 +196,7 @@ text-decoration: none;
 
     border-radius: 2px;
     background-color: var(--accent-color);
-} */
+}
 
 .contacts-list {
     display: flex;
@@ -200,14 +213,16 @@ text-decoration: none;
     line-height: 1.14;
     letter-spacing: 0.02em;
     color: #757575;
+
+    transition: color var(--animation);
 }
 
 .contact-mail-icon {
     margin-right: 10px;
     width: 16px;
     height: 12px;
-    fill: currentColor;   
-} 
+    fill: currentColor;    
+   } 
 
 .contact-phone-number {
 display: flex;
@@ -219,6 +234,8 @@ font-size: 14px;
 line-height: 1.14;
 letter-spacing: 0.02em;
 color: #757575;
+
+transition: color var(--animation);
 }
 
 .contact-phone-icon {
@@ -349,6 +366,37 @@ color: var(--primary-color);
 .proposals {
     display: flex;
     padding-bottom: 94px;
+}
+
+.proposals-photo {
+    position: relative;
+}
+
+.proposal-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+  
+    background-color: rgba(47, 48, 58, 0.8);
+}
+
+.proposal-text {
+    text-align: center;
+    
+    font-family: var(--primary-font-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    color: var(--secondary-color);
 }
 
 /* ============= /WHAT WE DO ============= */
@@ -504,6 +552,8 @@ color: var(--primary-color);
     color: var(--secondary-color);
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
+
+    transition: color var(--animation), background-color var(--animation);
 }
 
 .footer-socials-link:hover,
@@ -576,6 +626,8 @@ border: none;
     background: #F5F4FA;
     border-radius: 4px;
     border: none;
+
+    transition: background-color var(--animation), color var(--animation), box-shadow var(--animation);
 }
 
 .tabs-btn:hover,
@@ -597,16 +649,63 @@ border: none;
 }
 
 .portfolio-card {
-     cursor: pointer;
+    cursor: pointer;  
+    
+}
+
+.overlay-block {
+    width: 370px;
+    height: 294px;
+    overflow: hidden;
+
+    position: relative;
+}
+
+.overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(100%);
+
+    width: 100%;
+    height: 294px;
+    padding: 0 24px 0 24px;
+
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transition: var(--animation);
+}
+
+.overlay-text {
+    text-align: center;
+
+    font-family: var(--primary-font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: 0.03em;
+    user-select: none;
+   
+    color: var(--secondary-color);
 }
 
 .portfolio-link {
     display: block;
+    
+    transition: box-shadow var(--animation);
 }
 
 .portfolio-link:hover {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+    }
+
+.portfolio-link:hover .overlay {
+    transform: translateY(0);
 }
 
 .portfolio-wrapper {
@@ -614,7 +713,7 @@ border: none;
     padding-bottom: 20px;
     padding-left: 24px;
     padding-right: 24px;
-
+   
     border: 1px solid #EEEEEE;
     border-top: none;
 }
@@ -659,6 +758,8 @@ border: none;
     color: #AFB1B8;
     background-color: var(--secondary-color);
     border-radius: 50%;
+
+    transition: color var(--animation), background-color var(--animation);
 }
 
 .socials-link:hover,
@@ -697,6 +798,8 @@ border: none;
     background-color: var(--secondary-color);
     border: 1px solid #AFB1B8;
     border-radius: 4px;
+
+    transition: color var(--animation), background-color var(--animation), border-color var(--animation);
 }
 
 .client-link:hover,
@@ -711,3 +814,65 @@ fill: currentColor;
 }
 
 /* ============= /CLIENTS ============= */
+
+/* ============= MODAL WINDOW ============= */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+ 
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+
+    transition: opacity 600ms ease-out, visibility 600ms ease-out;
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1) rotate(0);
+
+    width: 528px;
+    height: 581px;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+
+    opacity: 1;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms,
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+}
+
+.modal-btn-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* ============= /MODAL WINDOW ============= */
